@@ -11,7 +11,7 @@ import io.grpc.StatusRuntimeException;
 
 import java.util.concurrent.ExecutionException;
 
-public class GrpcErrorHandlingFutureClient {
+public class ErrorHandlingFutureCallClient {
     public static void main(String[] args) throws Exception {
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8080)
                 .usePlaintext()
@@ -25,9 +25,8 @@ public class GrpcErrorHandlingFutureClient {
                     EchoRequest.newBuilder().setMessage("error").build());
             System.out.println(echoResponse.get().getMessage());
         } catch (ExecutionException e) {
+            // 异步请求抛出来的请求会不一样，需要处理 cause
             e.printStackTrace();
-            // INVALID_ARGUMENT: occurs exception
-            // 这个message 会包含 INVALID_ARGUMENT, 不是我们想需要的
             System.out.println(e.getMessage());
             if (e.getCause() instanceof StatusRuntimeException) {
                 StatusRuntimeException statusRuntimeException = (StatusRuntimeException) e.getCause();

@@ -1,8 +1,8 @@
 package com.jiaobuchong.grpc.errorservice;
 
 import com.jiaobuchong.proto.errorservice.ErrorServiceGrpc;
-import com.jiaobuchong.proto.errorservice.HelloRequest;
-import com.jiaobuchong.proto.errorservice.HelloResponse;
+import com.jiaobuchong.proto.errorservice.HiRequest;
+import com.jiaobuchong.proto.errorservice.HiResponse;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
@@ -17,7 +17,7 @@ public class HelloWorldGrpcClient {
                 = ErrorServiceGrpc.newBlockingStub(channel);
 
         try {
-            HelloResponse helloResponse = stub.sayHello(HelloRequest.newBuilder()
+            HiResponse helloResponse = stub.sayHello(HiRequest.newBuilder()
                     .setFirstName("jack ")
                     .setLastName("chou")
                     .build());
