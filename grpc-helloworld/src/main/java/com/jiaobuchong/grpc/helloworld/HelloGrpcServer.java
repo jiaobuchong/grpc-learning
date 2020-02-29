@@ -6,7 +6,7 @@ import io.grpc.ServerBuilder;
 import java.io.IOException;
 
 /**
- * 参考： https://www.baeldung.com/grpc-introduction
+ * grpc server创建参考： https://www.baeldung.com/grpc-introduction
  */
 public class HelloGrpcServer {
     public static void main(String[] args) throws IOException, InterruptedException {
