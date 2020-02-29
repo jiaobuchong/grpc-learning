@@ -1,4 +1,4 @@
-package com.jiaobuchong.grpc.helloworld;
+package com.jiaobuchong.grpc.errorservice;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
@@ -12,7 +12,7 @@ public class HelloGrpcServer {
     public static void main(String[] args) throws IOException, InterruptedException {
         Server server = ServerBuilder
                 .forPort(8080)
-                .addService(new HelloServiceImpl()).build();
+                .addService(new ErrorServiceImpl()).build();
 
         System.out.println("grpc server starting ");
         server.start();

@@ -1,10 +1,10 @@
-package com.jiaobuchong.grpc.helloworld;
+package com.jiaobuchong.grpc.errorservice;
 
-import com.jiaobuchong.proto.helloworld.*;
+import com.jiaobuchong.proto.errorservice.*;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 
-public class HelloServiceImpl extends GreeterServiceGrpc.GreeterServiceImplBase {
+public class ErrorServiceImpl extends ErrorServiceGrpc.ErrorServiceImplBase {
     @Override
     public void sayHello(HelloRequest request, StreamObserver<HelloResponse> responseObserver) {
         System.out.println("sayHello.......");
@@ -39,5 +39,10 @@ public class HelloServiceImpl extends GreeterServiceGrpc.GreeterServiceImplBase 
                     .withCause(e)
                     .asRuntimeException());
         }
+    }
+
+    @Override
+    public void customUnwrapException(EchoRequest request, StreamObserver<EchoResponse> responseObserver) {
+        responseObserver.onError(new CustomException("custom exception"));
     }
 }

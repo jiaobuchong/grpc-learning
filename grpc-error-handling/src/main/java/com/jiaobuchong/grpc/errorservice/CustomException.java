@@ -1,4 +1,4 @@
-package com.jiaobuchong.grpc.helloworld;
+package com.jiaobuchong.grpc.errorservice;
 
 public class CustomException extends RuntimeException {
 

@@ -1,9 +1,9 @@
-package com.jiaobuchong.grpc.helloworld;
+package com.jiaobuchong.grpc.errorservice;
 
 import com.google.common.util.concurrent.ListenableFuture;
-import com.jiaobuchong.proto.helloworld.EchoRequest;
-import com.jiaobuchong.proto.helloworld.EchoResponse;
-import com.jiaobuchong.proto.helloworld.GreeterServiceGrpc;
+import com.jiaobuchong.proto.errorservice.EchoRequest;
+import com.jiaobuchong.proto.errorservice.EchoResponse;
+import com.jiaobuchong.proto.errorservice.ErrorServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.Status;
@@ -17,8 +17,8 @@ public class GrpcErrorHandlingFutureClient {
                 .usePlaintext()
                 .build();
 
-        GreeterServiceGrpc.GreeterServiceFutureStub stub
-                = GreeterServiceGrpc.newFutureStub(channel);
+        ErrorServiceGrpc.ErrorServiceFutureStub stub
+                = ErrorServiceGrpc.newFutureStub(channel);
 
         try {
             ListenableFuture<EchoResponse> echoResponse = stub.customException(

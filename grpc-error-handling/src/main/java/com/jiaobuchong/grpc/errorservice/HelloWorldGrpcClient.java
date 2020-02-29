@@ -1,20 +1,20 @@
-package com.jiaobuchong.grpc.helloworld;
+package com.jiaobuchong.grpc.errorservice;
 
+import com.jiaobuchong.proto.errorservice.ErrorServiceGrpc;
+import com.jiaobuchong.proto.errorservice.HelloRequest;
+import com.jiaobuchong.proto.errorservice.HelloResponse;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import com.jiaobuchong.proto.helloworld.GreeterServiceGrpc;
-import com.jiaobuchong.proto.helloworld.HelloRequest;
-import com.jiaobuchong.proto.helloworld.HelloResponse;
 import io.grpc.StatusRuntimeException;
 
-public class GrpcClient {
+public class HelloWorldGrpcClient {
     public static void main(String[] args) {
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8080)
                 .usePlaintext()
                 .build();
 
-        GreeterServiceGrpc.GreeterServiceBlockingStub stub
-                = GreeterServiceGrpc.newBlockingStub(channel);
+        ErrorServiceGrpc.ErrorServiceBlockingStub stub
+                = ErrorServiceGrpc.newBlockingStub(channel);
 
         try {
             HelloResponse helloResponse = stub.sayHello(HelloRequest.newBuilder()
@@ -25,7 +25,6 @@ public class GrpcClient {
         } catch (StatusRuntimeException e) {
             e.printStackTrace();
         }
-
 
 
         channel.shutdown();

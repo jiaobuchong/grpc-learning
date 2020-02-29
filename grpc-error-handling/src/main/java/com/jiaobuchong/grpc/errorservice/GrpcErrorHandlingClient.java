@@ -1,6 +1,8 @@
-package com.jiaobuchong.grpc.helloworld;
+package com.jiaobuchong.grpc.errorservice;
 
-import com.jiaobuchong.proto.helloworld.*;
+import com.jiaobuchong.proto.errorservice.EchoRequest;
+import com.jiaobuchong.proto.errorservice.EchoResponse;
+import com.jiaobuchong.proto.errorservice.ErrorServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.Status;
@@ -12,8 +14,8 @@ public class GrpcErrorHandlingClient {
                 .usePlaintext()
                 .build();
 
-        GreeterServiceGrpc.GreeterServiceBlockingStub stub
-                = GreeterServiceGrpc.newBlockingStub(channel);
+        ErrorServiceGrpc.ErrorServiceBlockingStub stub
+                = ErrorServiceGrpc.newBlockingStub(channel);
 
         try {
             EchoResponse echoResponse = stub.customException(
@@ -33,9 +35,6 @@ public class GrpcErrorHandlingClient {
                 throw e;
             }
         }
-
-
-
         channel.shutdown();
     }
 }
