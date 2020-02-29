@@ -19,7 +19,7 @@ public class GrpcErrorHandlingUnknownClient {
         System.out.println("-----------------------------------");
         try {
             EchoResponse echoResponse = stub.customUnwrapException(EchoRequest.newBuilder().build());
-        } catch (StatusRuntimeException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

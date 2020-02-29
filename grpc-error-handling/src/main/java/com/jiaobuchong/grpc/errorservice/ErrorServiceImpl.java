@@ -50,7 +50,8 @@ public class ErrorServiceImpl extends ErrorServiceGrpc.ErrorServiceImplBase {
 
     @Override
     public void customUnwrapException(EchoRequest request, StreamObserver<EchoResponse> responseObserver) {
-        responseObserver.onError(new CustomException("custom exception"));
+//        responseObserver.onError(new CustomException("custom exception"));
+        throw new CustomException("one error occurs");
     }
 
     @Override
