@@ -12,7 +12,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <properties>
         <revision>1.0-SNAPSHOT</revision>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <grpc.version>1.27.2</grpc.version><!-- CURRENT_GRPC_VERSION -->
+        <grpc.version>1.53.0</grpc.version><!-- CURRENT_GRPC_VERSION -->
         <protobuf.version>3.11.0</protobuf.version>
         <protoc.version>3.11.0</protoc.version>
         <!-- required for jdk9 -->
